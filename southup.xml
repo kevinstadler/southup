@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- south up! default styling -->
+<!DOCTYPE Map>
+<Map background-color="black">
+	<!-- grid and bounding box lines -->
+	<Style name="line">
+		<Rule>
+			<LineSymbolizer stroke="rgba(0,0,0,1)" stroke-width="0.5" stroke-linejoin="round" stroke-linecap="round" />
+		</Rule>
+	</Style>
+	<Style name="ocean">
+		<Rule>
+			<PolygonSymbolizer fill="#c6ecff" />
+		</Rule>
+	</Style>
+	<Style name="land">
+		<Rule>
+			<PolygonSymbolizer fill="rgba(256,256,256,1)" />
+			<LineSymbolizer stroke="rgba(0,0,0,1)" stroke-width="0.5" stroke-linejoin="round" stroke-linecap="round" />
+		</Rule>
+	</Style>
+	<FontSet name="font">
+		<Font face-name="DejaVu Sans Book" />
+	</FontSet>
+	<Style name="name">
+		<Rule>
+			<!-- only show labels for self-governing countries -->
+			<Filter>[wb_a3] = [gu_a3]</Filter>
+			<!--Filter>[type] = 'Sovereign country' or [type] = 'Country'</Filter -->
+			<TextSymbolizer fontset-name="font" size="10.0" fill="rgba(0,0,0,1)"
+				orientation="0.0" halo-radius="1.0" halo-fill="rgba(256,256,256,0.5)"
+				label-position-tolerance="30" text-transform="capitalize"
+				placement="point" placement-type="list">
+				[admin]<!-- name -->
+				<Placement placement="interior" />
+				<Placement>[abbrev]</Placement>
+				<!--Placement allow-overlap="true" /-->
+			</TextSymbolizer>
+		</Rule>
+	</Style>
+	<Style name="raster"><Rule><RasterSymbolizer /></Rule></Style>
+
+	<!-- layers will be added dynamically by southup.py -->
+</Map>
